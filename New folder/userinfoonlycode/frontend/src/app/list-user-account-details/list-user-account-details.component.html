@@ -1,0 +1,39 @@
+<h1> User Account Details</h1>
+
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+
+<div class="container">
+    <table class="table">
+        <caption>List User Account Details</caption>
+        <thead>
+            <tr>
+                <th>user_id</th>
+                <th>user_account_no</th>
+                <th>user_account_type</th>
+                <th>account_creation_date</th>
+                <th>operation_type</th>
+                <th>second_operator_name</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- for (UserAccountDetails userAccountDetail: userAccountDetails) -->
+            <tr *ngFor="let userAccountDetail of userAccountDetails">
+                <td>{{userAccountDetail.userId}}</td>
+                <td>{{userAccountDetail.userAccountNo}}</td>
+                <td>{{userAccountDetail.userAccountType}}</td>
+                <td>{{userAccountDetail.accountCreationDate | date : 'yyyy-MM-dd'}}</td>
+                <td>{{userAccountDetail.operationType}}</td>
+                <td>{{userAccountDetail.secondOperatorName}}</td>
+                <td><button (click) = updateUserAccountDetailsById(userAccountDetail.userId) class="btn btn-info">Update</button></td>
+                <td><button (click) = "deleteUserAccountDetailsById(userAccountDetail.userId)" class="btn btn-warning">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- <div class="row">
+        <button (click)="addUserAccountDetails()" class="btn btn-success">Add Account Details</button>
+    </div> -->
+
+</div>

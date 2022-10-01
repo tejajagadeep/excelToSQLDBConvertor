@@ -1,0 +1,37 @@
+<h1>User Details</h1>
+
+<div class="container">
+
+    <fieldset class="form-group">
+        <label>User Id</label>
+        <input type="number" [(ngModel)]="userDetails.userId" class="form-control" name="userId" min="1001" required="required">
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label>First Name</label>
+        <input type="text" [(ngModel)]="userDetails.userFName" class="form-control" name="userFName" required="required">
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label>Last Name</label>
+        <input type="text" [(ngModel)]="userDetails.userLName" class="form-control" name="userLName" required="required">
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label>Mobile Number</label>
+        <input type="tel" [(ngModel)]="userDetails.userMobileNumber" class="form-control" name="userMobileNumber" maxlength="10" required="required">
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label>Email ID</label>
+        <input type="email" [(ngModel)]="userDetails.userEmailId" class="form-control" name="userEmailId" required="required">
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label>Created Date</label>
+        <input type="date" [ngModel]="userDetails.userCreatedDate | date : 'yyyy-MM-dd' " class="form-control" name="userCreatedDate" required="required">
+    </fieldset>
+
+    <button type="submit" class="btn btn-success" (click)="saveUserDetails()">Save</button>
+
+</div>

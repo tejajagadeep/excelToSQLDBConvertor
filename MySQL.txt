@@ -1,0 +1,39 @@
+#CREATE DATABASE user_info;
+USE user_info;
+
+drop table if exists User_Account_Details;
+drop table if exists User_Details;
+
+
+CREATE TABLE User_Details(
+
+	user_id int primary key,
+    user_fname varchar(50) not null,
+    user_lname varchar(50) not null,
+    user_mobile_number bigint(10) not null,
+    user_email_id varchar(50) unique,
+    user_created_date date,
+    check (user_mobile_number between 0 and 9999999999)
+    
+);
+
+CREATE TABLE User_Account_Details(
+	
+    user_id int primary key,
+    user_account_no int,
+    user_account_type varchar(7) not null,
+    account_creation_date date,
+    operation_type varchar(10) NOT NULL,
+    second_operator_name varchar(50),
+    check (user_account_type in ('SAVINGS', 'CURRENT')),
+    check (operation_type in ('INDIVIDUAL', 'JOINT')),
+    check (user_account_no between 0 and 999999999999999),
+    foreign key(user_id) references User_Details(user_id) on delete cascade
+
+);
+
+insert into User_Details(user_id, user_fname, user_lname, user_mobile_number, user_email_id, user_created_date) values(1001,'Virendra', 'Shewag',1111111111, 'Viru@gmail.com','2022-07-27');
+insert into User_Details(user_id, user_fname, user_lname, user_mobile_number, user_email_id, user_created_date) values(1002, 'Anil', 'Kumble',1111111112, 'Anil@gmail.com','2022-07-27');
+insert into User_Details(user_id, user_fname, user_lname, user_mobile_number, user_email_id, user_created_date) values(1003, 'Sachin', 'Tendulkar',1111111113, 'SRT@gmail.com','2022-07-25');
+insert into User_Details(user_id, user_fname, user_lname, user_mobile_number, user_email_id, user_created_date) values(1004, 'MS', 'Dhoni',1111111114, 'MS@gmail.com','2022-07-27');
+insert into User_Details(user_id, user_fname, user_lname, user_mobile_number, user_email_id, user_created_date) values(1005, 'Yuvaraj', 'Singh',1111111115,'YUVI@gmai.com','2022-07-27');

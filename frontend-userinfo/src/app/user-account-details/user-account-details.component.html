@@ -1,0 +1,49 @@
+<h1>User Account Details</h1>
+
+<div class="alert alert-warning" *ngIf='message'>{{message}}</div>
+
+<div class="container">
+
+    <fieldset class="form-group">
+        <label>User Id</label>
+        <input type="number" [(ngModel)]="userAccountDetails.userId" class="form-control" name="userId" min="1001" required="required">
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label>User Account Number</label>
+        <input type="number" [(ngModel)]="userAccountDetails.userAccountNo" class="form-control" name="userAccountNo" min="123456789012341" s maxlength="15" minlength="15" required="required">
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label for="accounType">User Account Type</label>
+
+        <select name="accounType" id="accounType" [(ngModel)]="userAccountDetails.userAccountType" class="form-control" required="required">
+            <option value="SAVINGS" selected>SAVINGS</option>
+            <option value="CURRENT">CURRENT</option>
+        </select>
+        <!-- <input type="" [(ngModel)]="userAccountDetails.userAccountType" class="form-control" name="userAccountType" required="required"> -->
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label>Account Creation Date</label>
+        <input type="date" [ngModel]="userAccountDetails.accountCreationDate | date : 'yyyy-MM-dd' " class="form-control" name="userCreationDate" required="required">
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label>Operation Type</label>
+        <label for="operationType">Operation Type</label>
+
+        <select name="operationType" id="operationType" [(ngModel)]="userAccountDetails.operationType" class="form-control" required="required">
+            <option value="INDIVIDUAL" selected>INDIVIDUAL</option>
+            <option value="JOINT">JOINT</option>
+        </select>
+    </fieldset>
+
+    <fieldset class="form-group" *ngIf="userAccountDetails.operationType==='JOINT'">
+        <label>Second Operator Name</label>
+        <input type="text" [(ngModel)]="userAccountDetails.secondOperatorName" id="secondOperatorName" class="form-control" name="secondOperatorName" required="required">
+    </fieldset>
+
+    <button type="submit" class="btn btn-success" (click)="saveUserAccountDetails()">Save</button>
+
+</div>

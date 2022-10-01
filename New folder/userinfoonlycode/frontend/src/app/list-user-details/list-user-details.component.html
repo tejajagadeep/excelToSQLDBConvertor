@@ -1,0 +1,38 @@
+<h1> User Details</h1>
+
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+
+<div class="container">
+    <table class="table">
+        <caption>List User Details</caption>
+        <thead>
+            <tr>
+                <th>user_id</th>
+                <th>user_fname</th>
+                <th>user_lname</th>
+                <th>user_mobile_number</th>
+                <th>user_email_id</th>
+                <th>user_created_date</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- for (UserDetails userDetail: userDetails) -->
+            <tr *ngFor="let userDetail of userDetails">
+                <td>{{userDetail.userId}}</td>
+                <td>{{userDetail.userFName}}</td>
+                <td>{{userDetail.userLName}}</td>
+                <td>{{userDetail.userMobileNumber}}</td>
+                <td>{{userDetail.userEmailId}}</td>
+                <td>{{userDetail.userCreatedDate | date : 'yyyy-MM-dd'}}</td>
+                <td><button (click) = updateUserDetailsById(userDetail.userId) class="btn btn-info">Update</button></td>
+                <td><button (click) = "deleteUserDetailsById(userDetail.userId)" class="btn btn-warning">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <button (click)="addUserDetails()" class="btn btn-success">addUserDetails</button>
+    </div>
+</div>

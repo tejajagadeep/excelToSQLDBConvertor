@@ -1,0 +1,41 @@
+<h1>Upload User Account Details</h1>
+
+<div class="alert alert-success" *ngIf='successMessage'>{{successMessage}}</div>
+<div class="alert alert-warning" *ngIf='failureMessage'>{{failureMessage}}</div>
+
+<div class="container">
+    <label for="formfile" class="form-label">Upload User Account Details Excel file </label>
+    <input class="form-control" type="file" (change)="ReadExcel($event)">
+</div>
+
+<div class="container">
+    <table class="table" id="uploadTable">
+        <caption>List User Details</caption>
+        <thead>
+            <tr>
+                <th>userId</th>
+                <th>userAccountNo</th>
+                <th>userAccountType</th>
+                <th>accountCreationDate</th>
+                <th>operationType</th>
+                <th>secondOperatorName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- for (UserAccountDetails userAccountDetail: userAccountDetails) -->
+            <tr *ngFor="let uploadUserAccountDetails of ExcelData">
+                <td>{{uploadUserAccountDetails.userId}}</td>
+                <td>{{uploadUserAccountDetails.userAccountNo}}</td>
+                <td>{{uploadUserAccountDetails.userAccountType}}</td>
+                <td>{{uploadUserAccountDetails.accountCreationDate | date}}</td>
+                <td>{{uploadUserAccountDetails.operationType}}</td>
+                <td>{{uploadUserAccountDetails.secondOperatorName}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="container">
+        <button type="submit" (click)="saveAllUserAccountDetails();" class="btn btn-success">Save</button>
+    </div>
+
+</div>
