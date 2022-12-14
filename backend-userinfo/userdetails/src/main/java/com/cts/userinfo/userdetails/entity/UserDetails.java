@@ -34,11 +34,8 @@ public class UserDetails {
     @Column(name = "user_created_date", nullable = false, updatable = false)
     private Date userCreatedDate;
 
-    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumns( {
-    @JoinColumn(name = "userId", referencedColumnName = "userId")
-//            @JoinColumn(name = "userCreatedDate", referencedColumnName = "accountCreationDate")
-//    })
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id")
     private UserAccountDetails userAccountDetails;
 
 }
